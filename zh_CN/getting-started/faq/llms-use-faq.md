@@ -132,7 +132,14 @@ OpenAI 的 GPT4 模型 API 和 ChatGPT Plus 是两个产品，分开收费的，
 
 ### 21. 如何增加其他的 Embedding Model？
 
-Dify 支持将 [Xinference embed 模型](https://github.com/xorbitsai/inference/blob/main/README\_zh\_CN.md#%E5%86%85%E7%BD%AE%E6%A8%A1%E5%9E%8B) 作为 Embedding 模型使用，只需在配置框中选择 `Embeddings` 类型即可。
+Dify 支持以下作为 Embedding 模型使用，只需在配置框中选择 `Embeddings` 类型即可。
+
+- Azure
+- LocalAI
+- MiniMax
+- OpenAI
+- Replicate
+- XInference
 
 ### 22. 如何把自己创建的应用设置成应用模板？
 

@@ -111,7 +111,14 @@ ChatGPT Plus and OpenAI's GPT-4 model API are two separate products with separat
 
 ### 18. How to add other embedding models?
 
-Dify supports using the Xinference embedded model as an Embedding model, simply select the `Embedding` type in the configuration box.
+Dify supports using the listed providers as an Embedding model provider, simply select the `Embedding` type in the configuration box.
+
+- Azure
+- LocalAI
+- MiniMax
+- OpenAI
+- Replicate
+- XInference
 
 ### 19. How can I set my own created app as an app template?
 
