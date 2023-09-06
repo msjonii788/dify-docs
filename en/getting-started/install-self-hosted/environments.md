@@ -301,9 +301,9 @@ Used to store uploaded data set files, team/tenant encryption keys, and other fi
 * UPLOAD_FILE_SIZE_LIMIT: 
 
   Upload file size limit, default 15M.
-* UPLOAD_FILE_BATCH_LIMIT: 
+* TENANT_DOCUMENT_COUNT: 
 
-  Number of files that can be uploaded in batch, default 5.
+  Number of files that can be uploaded per tenant, default 100.
 
 
 #### Sentry Configuration

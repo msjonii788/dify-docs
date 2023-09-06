@@ -277,12 +277,12 @@ Flask 调试模式，开启可在接口输出 trace 信息，方便调试。
 
 #### 数据集配置
 
-*   UPLOAD\_FILE\_SIZE\_LIMIT
+*   UPLOAD_FILE_SIZE_LIMIT
 
     上传文件大小限制，默认 15M。
-*   UPLOAD\_FILE\_BATCH\_LIMIT
+*   TENANT_DOCUMENT_COUNT
 
-    可批量上传文件数，默认 5。
+    租户可上传文件数，默认 100。
 
 #### Sentry 配置
 
