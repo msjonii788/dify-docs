@@ -130,7 +130,7 @@ FileNotFoundError: File not found
 
 ### 8. 想修改访问应用的域名，在哪里修改？
 
-在 `docker_compose.yal` 里面找到 APP\_WEB\_URL 配置域名。
+在 `docker_compose.yaml` 里面找到 APP\_WEB\_URL 配置域名。
 
 ### 9. 如果发生数据库迁移，需要备份哪些东西？
 
