@@ -193,19 +193,19 @@ Flask 调试模式，开启可在接口输出 trace 信息，方便调试。
 
 详细配置可参考：[跨域/身份相关指南](https://avytux375gg.feishu.cn/wiki/HyX3wdF1YiejX3k3U2CcTcmQnjg)
 
-#### Cookie 策略配置
+#### ~~Cookie 策略配置~~
+⚠️ 该配置从 0.3.24 版本起已废弃。
+~~用于设置身份校验的 Session Cookie 浏览器策略。~~
 
-用于设置身份校验的 Session Cookie 浏览器策略。
+*   ~~COOKIE\_HTTPONLY~~
 
-*   COOKIE\_HTTPONLY
+    ~~Cookie HttpOnly 配置，默认为 true。~~
+*   ~~COOKIE\_SAMESITE~~
 
-    Cookie HttpOnly 配置，默认为 true。
-*   COOKIE\_SAMESITE
+    ~~Cookie SameSite 配置，默认为 Lax。~~
+*   ~~COOKIE\_SECURE~~
 
-    Cookie SameSite 配置，默认为 Lax。
-*   COOKIE\_SECURE
-
-    Cookie Secure 配置，默认为 false。详细配置可参考：[跨域/身份相关指南](https://avytux375gg.feishu.cn/wiki/HyX3wdF1YiejX3k3U2CcTcmQnjg)
+    ~~Cookie Secure 配置，默认为 false。详细配置可参考：[跨域/身份相关指南](https://avytux375gg.feishu.cn/wiki/HyX3wdF1YiejX3k3U2CcTcmQnjg)~~
 
 #### 文件存储配置
 
