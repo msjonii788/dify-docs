@@ -207,7 +207,8 @@ Used to set the front-end cross-domain access policy.
 For detailed configuration, please refer to: [Cross-domain/identity related guide](https://avytux375gg.feishu.cn/wiki/HyX3wdF1YiejX3k3U2CcTcmQnjg)
 
 #### ~~Cookie Policy Configuration~~
-⚠️ This configuration is no longer valid, since v0.3.24.
+
+⚠️ This configuration is no longer valid, since v0.3.24.  
 
 ~~Used to set the browser policy for session cookies used for identity verification.~~
 
