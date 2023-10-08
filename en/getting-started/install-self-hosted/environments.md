@@ -208,7 +208,7 @@ For detailed configuration, please refer to: [Cross-domain/identity related guid
 
 #### ~~Cookie Policy Configuration~~
 
-⚠️ This configuration is no longer valid, since v0.3.24.  
+⚠️ This configuration is no longer valid since v0.3.24.  
 
 ~~Used to set the browser policy for session cookies used for identity verification.~~
 
