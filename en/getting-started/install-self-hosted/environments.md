@@ -157,26 +157,27 @@ This Redis configuration is used for caching and for pub/sub during conversation
 * REDIS_PASSWORD: Redis password, default is empty. It is strongly recommended to set a password.
 * REDIS_USE_SSL: Whether to use SSL protocol for connection, default is false
 
-#### Session Configuration
+#### ~~Session Configuration~~
+>⚠️ This configuration is no longer valid since v0.3.24.  
 
-Only used by the API service for interface identity verification.
+~~Only used by the API service for interface identity verification.~~
 
-*   SESSION_TYPE:
+*   ~~SESSION_TYPE:~~
 
-    Session component type
+    ~~Session component type~~
 
-    *   redis (default)
+    *   ~~redis (default)~~
 
-        If you choose this, you need to set the environment variables starting with SESSION_REDIS_ below.
-    *   sqlalchemy
+        ~~If you choose this, you need to set the environment variables starting with SESSION_REDIS_ below.~~
+    *   ~~sqlalchemy~~
 
-        If you choose this, the current database connection will be used and the sessions table will be used to read and write session records.
-* SESSION_REDIS_HOST: Redis host
-* SESSION_REDIS_PORT: Redis port, default is 6379
-* SESSION_REDIS_DB: Redis Database, default is 0. Please use a different Database from Redis and Celery Broker.
-* SESSION_REDIS_USERNAME: Redis username, default is empty
-* SESSION_REDIS_PASSWORD: Redis password, default is empty. It is strongly recommended to set a password.
-* SESSION_REDIS_USE_SSL: Whether to use SSL protocol for connection, default is false
+        ~~If you choose this, the current database connection will be used and the sessions table will be used to read and write session records.~~
+* ~~SESSION_REDIS_HOST: Redis host~~
+* ~~SESSION_REDIS_PORT: Redis port, default is 6379~~
+* ~~SESSION_REDIS_DB: Redis Database, default is 0. Please use a different Database from Redis and Celery Broker.~~
+* ~~SESSION_REDIS_USERNAME: Redis username, default is empty~~
+* ~~SESSION_REDIS_PASSWORD: Redis password, default is empty. It is strongly recommended to set a password.~~
+* ~~SESSION_REDIS_USE_SSL: Whether to use SSL protocol for connection, default is false~~
 
 #### Celery Configuration
 
@@ -208,7 +209,7 @@ For detailed configuration, please refer to: [Cross-domain/identity related guid
 
 #### ~~Cookie Policy Configuration~~
 
-⚠️ This configuration is no longer valid since v0.3.24.  
+>⚠️ This configuration is no longer valid since v0.3.24.  
 
 ~~Used to set the browser policy for session cookies used for identity verification.~~
 

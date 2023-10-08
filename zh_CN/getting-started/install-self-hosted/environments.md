@@ -147,23 +147,24 @@ Flask 调试模式，开启可在接口输出 trace 信息，方便调试。
 * REDIS\_PASSWORD：Redis 密码，默认为空，强烈建议设置密码。
 * REDIS\_USE\_SSL：是否使用 SSL 协议进行连接，默认 false
 
-#### Session 配置
+#### ~~Session 配置~~
+>⚠️ 该配置从 0.3.24 版本起已废弃。  
 
-仅 API 服务使用，用于验证接口身份。
+~~仅 API 服务使用，用于验证接口身份。~~
 
-* SESSION\_TYPE： Session 组件类型
-  *   redis（默认）
+* ~~SESSION\_TYPE： Session 组件类型~~
+  *   ~~redis（默认）~~
 
-      选择此项，则需要设置下方 SESSION\_REDIS\_ 开头的环境变量。
-  *   sqlalchemy
+      ~~选择此项，则需要设置下方 SESSION\_REDIS\_ 开头的环境变量。~~
+  *   ~~sqlalchemy~~
 
-      选择此项，则使用当前数据库连接，并使用 sessions 表进行读写 session 记录。
-* SESSION\_REDIS\_HOST：Redis host
-* SESSION\_REDIS\_PORT：Redis port，默认 6379
-* SESSION\_REDIS\_DB：Redis Database，默认为 0，请和 Redis、Celery Broker 分开用不同 Database。
-* SESSION\_REDIS\_USERNAME：Redis 用户名，默认为空
-* SESSION\_REDIS\_PASSWORD：Redis 密码，默认为空，强烈建议设置密码。
-* SESSION\_REDIS\_USE\_SSL：是否使用 SSL 协议进行连接，默认 false
+      ~~选择此项，则使用当前数据库连接，并使用 sessions 表进行读写 session 记录。~~
+* ~~SESSION\_REDIS\_HOST：Redis host~~
+* ~~SESSION\_REDIS\_PORT：Redis port，默认 6379~~
+* ~~SESSION\_REDIS\_DB：Redis Database，默认为 0，请和 Redis、Celery Broker 分开用不同 Database。~~
+* ~~SESSION\_REDIS\_USERNAME：Redis 用户名，默认为空~~
+* ~~SESSION\_REDIS\_PASSWORD：Redis 密码，默认为空，强烈建议设置密码。~~
+* ~~SESSION\_REDIS\_USE\_SSL：是否使用 SSL 协议进行连接，默认 false~~
 
 #### Celery 配置
 
@@ -194,7 +195,7 @@ Flask 调试模式，开启可在接口输出 trace 信息，方便调试。
 详细配置可参考：[跨域/身份相关指南](https://avytux375gg.feishu.cn/wiki/HyX3wdF1YiejX3k3U2CcTcmQnjg)
 
 #### ~~Cookie 策略配置~~
-⚠️ 该配置从 0.3.24 版本起已废弃。  
+>⚠️ 该配置从 0.3.24 版本起已废弃。  
 
 ~~用于设置身份校验的 Session Cookie 浏览器策略。~~
 
