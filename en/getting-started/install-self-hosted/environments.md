@@ -258,7 +258,7 @@ Used to store uploaded data set files, team/tenant encryption keys, and other fi
         - `weaviate`
         - `qdrant`
         - `milvus`
-        - `zilliz` share the same configuration as `milvus`
+        - `zilliz` (share the same configuration as `milvus`)
         - `pinecone` (not yet open)
 *   WEAVIATE_ENDPOINT
 
