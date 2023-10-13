@@ -254,7 +254,7 @@ Used to store uploaded data set files, team/tenant encryption keys, and other fi
 
 *   VECTOR_STORE
 
-    - ** Available enumeration types include：**
+    - **Available enumeration types include：**
         - `weaviate`
         - `qdrant`
         - `milvus`
