@@ -236,7 +236,13 @@ Flask 调试模式，开启可在接口输出 trace 信息，方便调试。
 
 *   VECTOR\_STORE
 
-    可使用的枚举类型包括：`weaviate`、`qdrant`、`pinecone`、`milvus`（后两个暂未开放）其中 `milvus`和 `zilliz` 为同一套配置，均为 `milvus`。
+    - **可使用的枚举类型包括：**
+        - `weaviate`
+        - `qdrant`
+        - `milvus`
+        - `zilliz` 与 `milvus` 一致
+        - `pinecone` (暂未开放)
+
 *   WEAVIATE\_ENDPOINT
 
     Weaviate 端点地址，如：`http://weaviate:8080`。

@@ -254,9 +254,12 @@ Used to store uploaded data set files, team/tenant encryption keys, and other fi
 
 *   VECTOR_STORE
 
-    The available enum types include: `weaviate`, `qdrant`, `pinecone`, `milvus` (the last two are not yet available)
-
-    Both `milvus` and `zilliz` use the same configuration, both being `milvus`.
+    - ** Available enumeration types include：**
+        - `weaviate`
+        - `qdrant`
+        - `milvus`
+        - `zilliz` share the same configuration as `milvus`
+        - `pinecone` (not yet open)
 *   WEAVIATE_ENDPOINT
 
     Weaviate endpoint address, such as: `http://weaviate:8080`.
