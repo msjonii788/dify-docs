@@ -123,6 +123,14 @@ Flask 调试模式，开启可在接口输出 trace 信息，方便调试。
 
     Celery worker 数量，默认为 1，按需设置。
 
+*   HTTP\_PROXY
+
+    HTTP 代理地址，用于解决国内无法访问 OpenAI, HuggingFace 的问题.
+
+*   HTTPS\_PROXY
+
+    HTTPS 代理地址，用于解决国内无法访问 OpenAI, HuggingFace 的问题.
+
 #### 数据库配置
 
 数据库使用 PostgreSQL，请使用 public schema。
