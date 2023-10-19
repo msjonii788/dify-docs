@@ -147,3 +147,11 @@ FileNotFoundError: File not found
 ### 12. 本地部署版如何通过邮箱邀请成员？
 
 本地部署版，邀请成员可通过邮箱邀请，输入邮箱邀请后，页面显示邀请链接，复制邀请链接转发给用户，用户打开链接通过邮箱登录设置密码即可登录到你的空间内。
+
+### 13. 本地部署版本遇到这个错误需要怎么办 Can't load tokenizer for 'gpt2'
+
+```
+Can't load tokenizer for 'gpt2'. If you were trying to load it from 'https://huggingface.co/models', make sure you don't have a local directory with the same name. Otherwise, make sure 'gpt2' is the correct path to a directory containing all relevant files for a GPT2TokenizerFast tokenizer.
+```
+
+可参考官网[环境变量说明文档](https://docs.dify.ai/v/zh-hans/getting-started/install-self-hosted/environments)去配置。以及相关 [Issue](https://github.com/langgenius/dify/issues/1261)。
