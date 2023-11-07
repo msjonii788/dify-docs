@@ -5,6 +5,28 @@ And Dify supports connecting to Xinference deployed large language model inferen
 
 ## Deploy Xinference
 
+### Before you start
+
+When using Docker to deploy a private model locally, you might need to access the service via the container's IP address instead of `127.0.0.1`. This is because `127.0.0.1` or `localhost` by default points to your host system and not the internal network of the Docker container. To retrieve the IP address of your Docker container, you can follow these steps:
+
+1. First, determine the name or ID of your Docker container. You can list all active containers using the following command:
+
+```bash
+docker ps
+```
+
+2. Then, use the command below to obtain detailed information about a specific container, including its IP address:
+
+```bash
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' container_name_or_ID
+```
+
+Please note that you usually do not need to manually find the IP address of the Docker container to access the service, because Docker offers a port mapping feature. This allows you to map the container ports to local machine ports, enabling access via your local address. For example, if you used the `-p 80:80` parameter when running the container, you can access the service inside the container by visiting `http://localhost:80` or `http://127.0.0.1:80`.
+
+If you do need to use the container's IP address directly, the steps above will assist you in obtaining this information.
+
+### Starting Xinference
+
 There are two ways to deploy Xinference, namely [local deployment](https://github.com/xorbitsai/inference/blob/main/README.md#local) and [distributed deployment](https://github.com/xorbitsai/inference/blob/main/README.md#distributed), here we take local deployment as an example.
 
 1. First, install Xinference via PyPI:
