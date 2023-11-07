@@ -9,7 +9,7 @@ Please do not share your Dify account information or other sensitive information
 {% endhint %}
 
 * Submit an Issue on [GitHub](https://github.com/langgenius/dify)
-* Join the [Discord community](https://discord.gg/FngNHpbcY7)
+* Join the [Discord community](https://discord.gg/8Tpq4AcN9c)
 * Email [support@dify.ai](mailto:support@dify.ai)
 
 ### Contact Us

@@ -9,7 +9,7 @@
 {% endhint %}
 
 * 在 [Github](https://github.com/langgenius/dify) 上提交 Issue
-* 加入 [Discord ](https://discord.gg/FngNHpbcY7)社群
+* 加入 [Discord ](https://discord.gg/8Tpq4AcN9c)社群
 * 发邮件至 [support@dify.ai](mailto:support@dify.ai)
 
 ### 联系我们
