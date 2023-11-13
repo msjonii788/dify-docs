@@ -17,31 +17,28 @@
 
 #### CONSOLE\_API\_URL
 
-> 此变量单独作为控制台 API URL 配置，原 CONSOLE\_URL 依旧可用。
-
 控制台 API 后端 URL，用于拼接授权回调，传空则为同域。范例：`https://api.console.dify.ai`。
 
 #### CONSOLE\_WEB\_URL
 
 控制台 web **前端** URL，用于拼接部分前端地址，以及 CORS 配置使用，传空则为同域。范例：`https://console.dify.ai`
 
-> 自 0.3.8 版本起，`CONSOLE_URL` 拆分为 `CONSOLE_API_URL` 和 `CONSOLE_WEB_URL`，`CONSOLE_URL` 依旧可用。
-
 #### SERVICE\_API\_URL
 
-Service API Url，用于**给前端**展示 Service API Base Url，传空则为同域。范例：`https://api.dify.ai`
-
-> 自 0.3.8 版本起，`API_URL` 更名为 `SERVICE_API_URL`，`API_URL` 依旧可用。
+Service API URL，用于**给前端**展示 Service API Base URL，传空则为同域。范例：`https://api.dify.ai`
 
 #### APP\_API\_URL
 
-WebApp API 后端 Url，用于声明**前端** API 后端地址，传空则为同域。范例：`https://app.dify.ai`
+WebApp API 后端 URL，用于声明**前端** API 后端地址，传空则为同域。范例：`https://app.dify.ai`
 
 #### APP\_WEB\_URL
 
-WebApp Url，用于**给前端**展示 WebAPP API Base Url，传空则为同域。范例：`https://api.app.dify.ai`
+WebApp URL，用于**给前端**展示 WebAPP API Base URL，传空则为同域。范例：`https://api.app.dify.ai`
 
-> 自 0.3.8 版本起，`APP_URL` 拆分为 `APP_API_URL` 和 `APP_WEB_URL`，`APP_URL` 依旧可用。
+#### FILES\_URL
+
+文件预览或下载 URL 前缀，用于将文件预览或下载 URL 给前端展示或作为多模态模型输入；
+为了防止他人伪造，图片预览 URL 是带有签名的，并且有 5 分钟过期时间。
 
 ***
 
@@ -155,25 +152,6 @@ Flask 调试模式，开启可在接口输出 trace 信息，方便调试。
 * REDIS\_PASSWORD：Redis 密码，默认为空，强烈建议设置密码。
 * REDIS\_USE\_SSL：是否使用 SSL 协议进行连接，默认 false
 
-#### ~~Session 配置~~
->⚠️ 该配置从 0.3.24 版本起已废弃。  
-
-~~仅 API 服务使用，用于验证接口身份。~~
-
-* ~~SESSION\_TYPE： Session 组件类型~~
-  *   ~~redis（默认）~~
-
-      ~~选择此项，则需要设置下方 SESSION\_REDIS\_ 开头的环境变量。~~
-  *   ~~sqlalchemy~~
-
-      ~~选择此项，则使用当前数据库连接，并使用 sessions 表进行读写 session 记录。~~
-* ~~SESSION\_REDIS\_HOST：Redis host~~
-* ~~SESSION\_REDIS\_PORT：Redis port，默认 6379~~
-* ~~SESSION\_REDIS\_DB：Redis Database，默认为 0，请和 Redis、Celery Broker 分开用不同 Database。~~
-* ~~SESSION\_REDIS\_USERNAME：Redis 用户名，默认为空~~
-* ~~SESSION\_REDIS\_PASSWORD：Redis 密码，默认为空，强烈建议设置密码。~~
-* ~~SESSION\_REDIS\_USE\_SSL：是否使用 SSL 协议进行连接，默认 false~~
-
 #### Celery 配置
 
 *   CELERY\_BROKER\_URL
@@ -201,21 +179,6 @@ Flask 调试模式，开启可在接口输出 trace 信息，方便调试。
     WebAPP CORS 跨域策略，默认为 `*`，即所有域名均可访问。
 
 详细配置可参考：[跨域/身份相关指南](https://avytux375gg.feishu.cn/wiki/HyX3wdF1YiejX3k3U2CcTcmQnjg)
-
-#### ~~Cookie 策略配置~~
->⚠️ 该配置从 0.3.24 版本起已废弃。  
-
-~~用于设置身份校验的 Session Cookie 浏览器策略。~~
-
-*   ~~COOKIE\_HTTPONLY~~
-
-    ~~Cookie HttpOnly 配置，默认为 true。~~
-*   ~~COOKIE\_SAMESITE~~
-
-    ~~Cookie SameSite 配置，默认为 Lax。~~
-*   ~~COOKIE\_SECURE~~
-
-    ~~Cookie Secure 配置，默认为 false。详细配置可参考：[跨域/身份相关指南](https://avytux375gg.feishu.cn/wiki/HyX3wdF1YiejX3k3U2CcTcmQnjg)~~
 
 #### 文件存储配置
 
@@ -296,9 +259,25 @@ Flask 调试模式，开启可在接口输出 trace 信息，方便调试。
 *   UPLOAD_FILE_SIZE_LIMIT
 
     上传文件大小限制，默认 15M。
+*   UPLOAD_FILE_BATCH_LIMIT
+
+    每次上传文件数上限，默认 5 个。
+
 *   TENANT_DOCUMENT_COUNT
 
     租户可上传文件数，默认 100。
+
+#### 多模态模型配置
+
+*   MULTIMODAL_SEND_IMAGE_FORMAT
+
+    多模态模型输入时，发送图片的格式，默认为 `base64`，可选 `url`。
+    `url` 模式下，调用的延迟会比 `base64` 模式下低，一般建议使用兼容更好的 `base64` 模式。
+    若配置为 `url`，则需要将 `FILES_URL` 配置为外部可访问的地址，以便多模态模型可以访问到图片。
+
+*   UPLOAD_IMAGE_FILE_SIZE_LIMIT
+
+    上传图片文件大小限制，默认 10M。
 
 #### Sentry 配置
 
@@ -377,3 +356,60 @@ Notion 集成配置，变量可通过申请 Notion integration 获取：[https:/
 #### SENTRY\_DSN
 
 Sentry DSN 地址，默认为空，为空时则所有监控信息均不上报 Sentry。
+
+
+## 已废弃
+
+#### CONSOLE\_URL
+
+> 修改于 0.3.8，将于 0.4.0 废弃，替代为：`CONSOLE_API_URL` 和 `CONSOLE_WEB_URL`。
+
+控制台 URL，用于拼接授权回调、控制台前端地址，以及 CORS 配置使用，传空则为同域。范例：`https://console.dify.ai`。
+
+#### API\_URL
+
+> 修改于 0.3.8，将于 0.4.0 废弃，替代为 `SERVICE_API_URL`。
+
+API Url，用于**给前端**展示 Service API Base Url，传空则为同域。范例：`https://api.dify.ai`
+
+#### APP\_URL
+
+> 修改于 0.3.8，将于 0.4.0 废弃，替代为 `APP_API_URL` 和 `APP_WEB_URL`。
+
+WebApp Url，用于声明**前端** API 后端地址，传空则为同域。范例：`https://app.dify.ai`
+
+#### Session 配置
+
+>⚠️ 该配置从 0.3.24 版本起废弃。（将于 0.4.0 彻底移除）
+
+仅 API 服务使用，用于验证接口身份。
+
+* SESSION\_TYPE： Session 组件类型
+  *   redis（默认）
+
+      选择此项，则需要设置下方 SESSION\_REDIS\_ 开头的环境变量。
+  *   sqlalchemy
+
+      选择此项，则使用当前数据库连接，并使用 sessions 表进行读写 session 记录。
+* SESSION\_REDIS\_HOST：Redis host
+* SESSION\_REDIS\_PORT：Redis port，默认 6379
+* SESSION\_REDIS\_DB：Redis Database，默认为 0，请和 Redis、Celery Broker 分开用不同 Database。
+* SESSION\_REDIS\_USERNAME：Redis 用户名，默认为空
+* SESSION\_REDIS\_PASSWORD：Redis 密码，默认为空，强烈建议设置密码。
+* SESSION\_REDIS\_USE\_SSL：是否使用 SSL 协议进行连接，默认 false
+
+#### Cookie 策略配置
+
+>⚠️ 该配置从 0.3.24 版本起废弃。  （将于 0.4.0 彻底移除）
+
+用于设置身份校验的 Session Cookie 浏览器策略。
+
+*   COOKIE\_HTTPONLY
+
+    Cookie HttpOnly 配置，默认为 true。
+*   COOKIE\_SAMESITE
+
+    Cookie SameSite 配置，默认为 Lax。
+*   COOKIE\_SECURE
+
+    Cookie Secure 配置，默认为 false。

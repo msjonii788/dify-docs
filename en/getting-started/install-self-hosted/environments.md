@@ -23,13 +23,9 @@ The backend URL of the console API, used to concatenate the authorization callba
 
 The front-end URL of the console web, used to concatenate some front-end addresses and for CORS configuration use. If empty, it is the same domain. Example: `https://console.dify.ai`
 
-> Starting from version `0.3.8`, `CONSOLE_URL` has been split into `CONSOLE_API_URL` and `CONSOLE_WEB_URL`, but `CONSOLE_URL` is still available.
-
 #### SERVICE_API_URL
 
 Service API Url, used to display Service API Base Url to the front-end. If empty, it is the same domain. Example: `https://api.dify.ai`
-
-> Starting from version `0.3.8`, `API_URL` has been renamed to `SERVICE_API_URL`, but `API_URL` is still available.
 
 #### APP_API_URL
 
@@ -39,7 +35,10 @@ WebApp API backend Url, used to declare the back-end URL for the front-end API. 
 
 WebApp Url, used to display WebAPP API Base Url to the front-end. If empty, it is the same domain. Example: `https://api.app.dify.ai`
 
-> Starting from version `0.3.8`, `APP_URL` has been split into `APP_API_URL` and `APP_WEB_URL`, but `APP_URL` is still available.
+#### FILES\_URL
+
+File preview or download URL prefix, used to display the file preview or download URL to the front-end or as a multi-modal model input;
+In order to prevent others from forging, the image preview URL is signed and has a 5-minute expiration time.
 
 ### Server
 
@@ -157,28 +156,6 @@ This Redis configuration is used for caching and for pub/sub during conversation
 * REDIS_PASSWORD: Redis password, default is empty. It is strongly recommended to set a password.
 * REDIS_USE_SSL: Whether to use SSL protocol for connection, default is false
 
-#### ~~Session Configuration~~
->⚠️ This configuration is no longer valid since v0.3.24.  
-
-~~Only used by the API service for interface identity verification.~~
-
-*   ~~SESSION_TYPE:~~
-
-    ~~Session component type~~
-
-    *   ~~redis (default)~~
-
-        ~~If you choose this, you need to set the environment variables starting with SESSION_REDIS_ below.~~
-    *   ~~sqlalchemy~~
-
-        ~~If you choose this, the current database connection will be used and the sessions table will be used to read and write session records.~~
-* ~~SESSION_REDIS_HOST: Redis host~~
-* ~~SESSION_REDIS_PORT: Redis port, default is 6379~~
-* ~~SESSION_REDIS_DB: Redis Database, default is 0. Please use a different Database from Redis and Celery Broker.~~
-* ~~SESSION_REDIS_USERNAME: Redis username, default is empty~~
-* ~~SESSION_REDIS_PASSWORD: Redis password, default is empty. It is strongly recommended to set a password.~~
-* ~~SESSION_REDIS_USE_SSL: Whether to use SSL protocol for connection, default is false~~
-
 #### Celery Configuration
 
 *   CELERY_BROKER_URL
@@ -204,26 +181,6 @@ Used to set the front-end cross-domain access policy.
 *   WEB_API_CORS_ALLOW_ORIGINS
 
     WebAPP CORS cross-domain policy, default is `*`, that is, all domains can access.
-
-For detailed configuration, please refer to: [Cross-domain/identity related guide](https://avytux375gg.feishu.cn/wiki/HyX3wdF1YiejX3k3U2CcTcmQnjg)
-
-#### ~~Cookie Policy Configuration~~
-
->⚠️ This configuration is no longer valid since v0.3.24.  
-
-~~Used to set the browser policy for session cookies used for identity verification.~~
-
-*   ~~COOKIE_HTTPONLY~~
-
-    ~~Cookie HttpOnly configuration, default is true.~~
-*   ~~COOKIE_SAMESITE~~
-
-    ~~Cookie SameSite configuration, default is Lax.~~
-*   ~~COOKIE_SECURE~~
-
-    ~~Cookie Secure configuration, default is false.~~
-
-~~For detailed configuration, please refer to: [Cross-domain/identity related guide](https://avytux375gg.feishu.cn/wiki/HyX3wdF1YiejX3k3U2CcTcmQnjg)~~
 
 #### File Storage Configuration
 
@@ -307,10 +264,24 @@ Used to store uploaded data set files, team/tenant encryption keys, and other fi
 * UPLOAD_FILE_SIZE_LIMIT: 
 
   Upload file size limit, default 15M.
+*   UPLOAD_FILE_BATCH_LIMIT
+
+    The maximum number of files that can be uploaded at a time, default 5.
 * TENANT_DOCUMENT_COUNT: 
 
   Number of files that can be uploaded per tenant, default 100.
 
+#### Multi-modal Model Configuration
+
+*   MULTIMODAL_SEND_IMAGE_FORMAT
+
+    The format of the image sent when the multi-modal model is input, the default is `base64`, optional `url`.
+    The delay of the call in `url` mode will be lower than that in `base64` mode. It is generally recommended to use the more compatible `base64` mode.
+    If configured as `url`, you need to configure `FILES_URL` as an externally accessible address so that the multi-modal model can access the image.
+
+*   UPLOAD_IMAGE_FILE_SIZE_LIMIT
+
+    Upload image file size limit, default 10M.
 
 #### Sentry Configuration
 
@@ -389,3 +360,64 @@ Only available for cloud version, used for model hosting configuration.
 #### SENTRY_DSN
 
 Sentry DSN address, default is empty, when empty, all monitoring information is not reported to Sentry.
+
+
+## Deprecated
+
+#### CONSOLE\_URL
+
+>⚠️ Modified in 0.3.8, will be deprecated in 0.4.0, replaced by: `CONSOLE_API_URL` and `CONSOLE_WEB_URL`.
+
+Console URL, used to concatenate the authorization callback, console front-end address, and CORS configuration use. If empty, it is the same domain. Example: `https://console.dify.ai`.
+
+#### API\_URL
+
+>⚠️ Modified in 0.3.8, will be deprecated in 0.4.0, replaced by `SERVICE_API_URL`.
+
+API URL, used to display Service API Base URL to the front-end. If empty, it is the same domain. Example: `https://api.dify.ai`
+
+#### APP\_URL
+
+>⚠️ Modified in 0.3.8, will be deprecated in 0.4.0, replaced by `APP_API_URL` and `APP_WEB_URL`.
+
+WebApp Url, used to display WebAPP API Base Url to the front-end. If empty, it is the same domain. Example: `https://api.app.dify.ai`
+
+#### Session Configuration
+
+>⚠️ This configuration is no longer valid since v0.3.24, will be deprecated in 0.4.0.
+
+Only used by the API service for interface identity verification.
+
+*   SESSION\_TYPE：
+
+    Session component type
+
+    *   redis (default)
+
+        If you choose this, you need to set the environment variables starting with SESSION_REDIS_ below.
+    *   sqlalchemy
+
+        If you choose this, the current database connection will be used and the sessions table will be used to read and write session records.
+
+* SESSION\_REDIS\_HOST: Redis host
+* SESSION\_REDIS\_PORT: Redis port, default is 6379
+* SESSION\_REDIS\_DB: Redis Database, default is 0. Please use a different Database from Redis and Celery Broker.
+* SESSION\_REDIS\_USERNAME: Redis username, default is empty
+* SESSION\_REDIS\_PASSWORD: Redis password, default is empty. It is strongly recommended to set a password.
+* SESSION\_REDIS\_USE\_SSL: Whether to use SSL protocol for connection, default is false
+
+#### Cookie Policy Configuration
+
+>⚠️ This configuration is no longer valid since v0.3.24, will be deprecated in 0.4.0.
+
+Used to set the browser policy for session cookies used for identity verification.
+
+*   COOKIE\_HTTPONLY
+
+    Cookie HttpOnly configuration, default is true.
+*  COOKIE\_SAMESITE
+
+    Cookie SameSite configuration, default is Lax.
+*  COOKIE\_SECURE
+
+    Cookie Secure configuration, default is false.
